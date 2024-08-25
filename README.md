@@ -17,6 +17,14 @@ Este proyecto es una implementación del popular juego "Wordle" en SwiftUI para 
 - **Validación de Palabras**: Valida las palabras ingresadas contra una palabra objetivo obtenida de una API externa.
 - **Conexión a una API**: El juego se conecta a una API externa para obtener palabras aleatorias de cinco letras en español.
 
+## Capturas de Pantalla
+
+### Modo Claro
+![Modo Claro](https://live.staticflickr.com/65535/53947474700_48cab80990_o.png)
+
+### Modo Oscuro
+![Modo Oscuro](https://live.staticflickr.com/65535/53947474690_a373551c24_o.png)
+
 ## Estructura del Proyecto
 
 - **`Model.swift`**: Contiene la estructura del modelo de datos, incluyendo `LetterState`, `LetterColor`, y `WordModel`, que maneja la lógica de verificación y comparación de palabras.
