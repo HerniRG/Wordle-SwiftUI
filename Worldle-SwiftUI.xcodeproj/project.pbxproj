@@ -7,18 +7,36 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		66C0FA402C7B7A5500050B16 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA3F2C7B7A5500050B16 /* KeyboardView.swift */; };
+		66C0FA452C7B7D0200050B16 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA442C7B7D0200050B16 /* WordService.swift */; };
+		66C0FA482C7B7F9C00050B16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA472C7B7F9C00050B16 /* GameViewModel.swift */; };
+		66C0FA4A2C7B855900050B16 /* GameController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA492C7B855900050B16 /* GameController.swift */; };
+		66C0FA4C2C7B87E600050B16 /* GameStatusBanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA4B2C7B87E600050B16 /* GameStatusBanner.swift */; };
+		66C0FA4E2C7B9D0500050B16 /* Model.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA4D2C7B9D0500050B16 /* Model.swift */; };
 		66D4A10E2C7B745A008B2E5B /* Worldle_SwiftUIApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4A10D2C7B745A008B2E5B /* Worldle_SwiftUIApp.swift */; };
 		66D4A1102C7B745A008B2E5B /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4A10F2C7B745A008B2E5B /* ContentView.swift */; };
 		66D4A1122C7B745B008B2E5B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D4A1112C7B745B008B2E5B /* Assets.xcassets */; };
 		66D4A1152C7B745B008B2E5B /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 66D4A1142C7B745B008B2E5B /* Preview Assets.xcassets */; };
+		66D4A1212C7B75FF008B2E5B /* LetterCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4A1202C7B75FF008B2E5B /* LetterCellView.swift */; };
+		66D4A1232C7B782C008B2E5B /* WordRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4A1222C7B782C008B2E5B /* WordRowView.swift */; };
+		66D4A1252C7B788D008B2E5B /* WordGridView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66D4A1242C7B788D008B2E5B /* WordGridView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		66C0FA3F2C7B7A5500050B16 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		66C0FA442C7B7D0200050B16 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
+		66C0FA472C7B7F9C00050B16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		66C0FA492C7B855900050B16 /* GameController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameController.swift; sourceTree = "<group>"; };
+		66C0FA4B2C7B87E600050B16 /* GameStatusBanner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameStatusBanner.swift; sourceTree = "<group>"; };
+		66C0FA4D2C7B9D0500050B16 /* Model.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Model.swift; sourceTree = "<group>"; };
 		66D4A10A2C7B745A008B2E5B /* Worldle-SwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Worldle-SwiftUI.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		66D4A10D2C7B745A008B2E5B /* Worldle_SwiftUIApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Worldle_SwiftUIApp.swift; sourceTree = "<group>"; };
 		66D4A10F2C7B745A008B2E5B /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		66D4A1112C7B745B008B2E5B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		66D4A1142C7B745B008B2E5B /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		66D4A1202C7B75FF008B2E5B /* LetterCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCellView.swift; sourceTree = "<group>"; };
+		66D4A1222C7B782C008B2E5B /* WordRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordRowView.swift; sourceTree = "<group>"; };
+		66D4A1242C7B788D008B2E5B /* WordGridView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordGridView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -32,6 +50,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		66C0FA432C7B7CF400050B16 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				66C0FA442C7B7D0200050B16 /* WordService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		66C0FA462C7B7F8400050B16 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				66C0FA472C7B7F9C00050B16 /* GameViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 		66D4A1012C7B745A008B2E5B = {
 			isa = PBXGroup;
 			children = (
@@ -51,8 +85,12 @@
 		66D4A10C2C7B745A008B2E5B /* Worldle-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				66C0FA462C7B7F8400050B16 /* ViewModel */,
+				66C0FA432C7B7CF400050B16 /* Services */,
+				66D4A11D2C7B74B8008B2E5B /* Controller */,
+				66D4A11C2C7B74B1008B2E5B /* View */,
+				66D4A11B2C7B74AB008B2E5B /* Model */,
 				66D4A10D2C7B745A008B2E5B /* Worldle_SwiftUIApp.swift */,
-				66D4A10F2C7B745A008B2E5B /* ContentView.swift */,
 				66D4A1112C7B745B008B2E5B /* Assets.xcassets */,
 				66D4A1132C7B745B008B2E5B /* Preview Content */,
 			);
@@ -65,6 +103,51 @@
 				66D4A1142C7B745B008B2E5B /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		66D4A11B2C7B74AB008B2E5B /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				66C0FA4D2C7B9D0500050B16 /* Model.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		66D4A11C2C7B74B1008B2E5B /* View */ = {
+			isa = PBXGroup;
+			children = (
+				66D4A10F2C7B745A008B2E5B /* ContentView.swift */,
+				66D4A1272C7B797B008B2E5B /* Keyboard */,
+				66D4A1262C7B795D008B2E5B /* Grid */,
+				66C0FA4B2C7B87E600050B16 /* GameStatusBanner.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		66D4A11D2C7B74B8008B2E5B /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				66C0FA492C7B855900050B16 /* GameController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
+		66D4A1262C7B795D008B2E5B /* Grid */ = {
+			isa = PBXGroup;
+			children = (
+				66D4A1202C7B75FF008B2E5B /* LetterCellView.swift */,
+				66D4A1222C7B782C008B2E5B /* WordRowView.swift */,
+				66D4A1242C7B788D008B2E5B /* WordGridView.swift */,
+			);
+			path = Grid;
+			sourceTree = "<group>";
+		};
+		66D4A1272C7B797B008B2E5B /* Keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				66C0FA3F2C7B7A5500050B16 /* KeyboardView.swift */,
+			);
+			path = Keyboard;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -137,8 +220,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				66D4A1252C7B788D008B2E5B /* WordGridView.swift in Sources */,
 				66D4A1102C7B745A008B2E5B /* ContentView.swift in Sources */,
 				66D4A10E2C7B745A008B2E5B /* Worldle_SwiftUIApp.swift in Sources */,
+				66C0FA452C7B7D0200050B16 /* WordService.swift in Sources */,
+				66C0FA4A2C7B855900050B16 /* GameController.swift in Sources */,
+				66C0FA482C7B7F9C00050B16 /* GameViewModel.swift in Sources */,
+				66C0FA402C7B7A5500050B16 /* KeyboardView.swift in Sources */,
+				66D4A1212C7B75FF008B2E5B /* LetterCellView.swift in Sources */,
+				66C0FA4E2C7B9D0500050B16 /* Model.swift in Sources */,
+				66D4A1232C7B782C008B2E5B /* WordRowView.swift in Sources */,
+				66C0FA4C2C7B87E600050B16 /* GameStatusBanner.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
