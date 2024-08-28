@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct GameStatusBanner: View {
+struct GameStatusBannerView: View {
     @EnvironmentObject var viewModel: GameViewModel
     
     var body: some View {
@@ -28,24 +28,28 @@ struct GameStatusBanner: View {
                     
                     Spacer()
                     
-                    Button(action: {
-                        viewModel.resetGame()
-                    }) {
-                        Image(systemName: "arrow.clockwise")
-                            .font(.title)
-                            .foregroundColor(.white)
-                            .padding()
+                    if viewModel.showResetButton {
+                        Button(action: {
+                            viewModel.resetGame()
+                        }) {
+                            Image(systemName: "arrow.clockwise")
+                                .font(.title)
+                                .foregroundColor(.white)
+                                .padding()
+                        }
+                        .transition(.opacity)
                     }
                 }
                 .padding(.horizontal)
             }
         }
-        .frame(height: 100)  // Mantener el tamaño fijo del banner
+        .frame(height: 100)
         .animation(.easeInOut, value: viewModel.gameStatusMessage)
+        .animation(.easeInOut, value: viewModel.showResetButton)
     }
 }
 
 #Preview {
-    GameStatusBanner()
+    GameStatusBannerView()
         .environmentObject(GameViewModel())
 }

@@ -14,7 +14,7 @@ struct ContentView: View {
     
     var body: some View {
         VStack(spacing: 20) {
-            GameStatusBanner()
+            GameStatusBannerView()
             
             WordGridView(animateRow: animateRow, showColors: showColors)
             

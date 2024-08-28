@@ -22,8 +22,6 @@ enum LetterColor {
 }
 
 // Modelo que representa la palabra objetivo y la lógica de validación
-import Foundation
-
 struct WordModel {
     let targetWord: [LetterState]
     
@@ -38,14 +36,14 @@ struct WordModel {
         
         // Contar la cantidad de letras en la palabra objetivo
         for letterState in targetWord {
-            let letter = letterState.letter.normalized
+            let letter = letterState.letter.normalized()
             letterCount[letter, default: 0] += 1
         }
         
         // Primero, identificar las letras correctas (verdes)
         for (index, letter) in guess.enumerated() {
-            let normalizedGuess = letter.normalized
-            let normalizedTarget = targetWord[index].letter.normalized
+            let normalizedGuess = letter.normalized()
+            let normalizedTarget = targetWord[index].letter.normalized()
             
             if normalizedGuess == normalizedTarget {
                 result.append(LetterState(letter: letter, color: .correct))
@@ -59,13 +57,13 @@ struct WordModel {
         // Luego, identificar las letras presentes pero en la posición incorrecta (amarillo)
         for i in 0..<result.count {
             if result[i].color == .unknown {
-                let normalizedGuess = result[i].letter.normalized
+                let normalizedGuess = result[i].letter.normalized()
                 if let targetIndex = remainingTargetLetters.firstIndex(where: {
-                    $0.letter.normalized == normalizedGuess && $0.color != .correct
+                    $0.letter.normalized() == normalizedGuess && $0.color != .correct
                 }), letterCount[normalizedGuess, default: 0] > 0 {
                     result[i].color = .present
                     remainingTargetLetters[targetIndex].color = .present
-                    letterCount[normalizedGuess]? -= 1  // Disminuir el conteo de esa letra
+                    letterCount[normalizedGuess]? -= 1
                 } else {
                     result[i].color = .absent
                 }
@@ -76,10 +74,29 @@ struct WordModel {
     }
 }
 
-
-// Extensión para normalizar las letras eliminando tildes y diacríticos
+// Extensión para normalizar las letras eliminando tildes y diacríticos teniendo en cuenta la ñ
 extension String {
-    var normalized: String {
-        return self.folding(options: .diacriticInsensitive, locale: .current)
+    func normalized() -> String {
+        let decomposed = self.folding(options: [.diacriticInsensitive, .caseInsensitive], locale: .current)
+        
+        var result = ""
+        
+        for char in decomposed {
+            if char == "n" {
+                // Verifica si originalmente era "ñ" o "Ñ"
+                let originalIndex = self.index(self.startIndex, offsetBy: result.count)
+                let originalChar = self[originalIndex]
+                
+                if originalChar == "ñ" || originalChar == "Ñ" {
+                    result.append(originalChar)
+                } else {
+                    result.append(char)
+                }
+            } else {
+                result.append(char)
+            }
+        }
+        
+        return result
     }
 }
