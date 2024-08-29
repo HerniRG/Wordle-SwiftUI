@@ -9,36 +9,40 @@ import Foundation
 
 class WordService {
     
-    func fetchAllFiveLetterWords(completion: @escaping ([String]) -> Void) {
-        let letters = "abcdefghijklmnopqrstuvwxyz".map { String($0) }
-        var allWords: Set<String> = []
-        let dispatchGroup = DispatchGroup()
-
-        for letter in letters {
-            dispatchGroup.enter()
-            let urlString = "https://api.datamuse.com/words?sp=\(letter)????&v=es&max=1000"
-            guard let url = URL(string: urlString) else {
-                dispatchGroup.leave()
-                continue
-            }
-
-            URLSession.shared.dataTask(with: url) { data, response, error in
-                defer { dispatchGroup.leave() }
-
-                if let data = data,
-                   let wordList = try? JSONDecoder().decode([Word].self, from: data) {
-                    let words = wordList.map { $0.word.uppercased() }
-                    allWords.formUnion(words)
-                }
-            }.resume()
-        }
-
-        dispatchGroup.notify(queue: .main) {
-            completion(Array(allWords))
-        }
+    private var allWords: [String] = []
+    
+    init() {
+        loadWordsFromFile()
     }
     
-    private struct Word: Decodable {
-        let word: String
+    private func loadWordsFromFile() {
+        if let filePath = Bundle.main.path(forResource: "listado-general", ofType: "txt") {
+            do {
+                let contents = try String(contentsOfFile: filePath)
+                allWords = contents.components(separatedBy: .newlines)
+                    .map { $0.uppercased() }
+                    .filter { !$0.isEmpty }
+                print("Palabras cargadas: \(allWords.count)")
+            } catch {
+                print("Error al leer el archivo: \(error)")
+            }
+        } else {
+            print("Archivo no encontrado")
+        }
+    }
+
+    
+    func fetchWords(ofLength length: Int, completion: @escaping ([String]) -> Void) {
+        let filteredWords = allWords.filter { $0.count == length }
+        completion(filteredWords)
+    }
+    
+    func fetchRandomWord(ofLength length: Int, completion: @escaping (String?) -> Void) {
+        let wordsOfLength = allWords.filter { $0.count == length }
+        completion(wordsOfLength.randomElement())
+    }
+    
+    func isWordValid(_ word: String) -> Bool {
+        return allWords.contains(word.uppercased())
     }
 }

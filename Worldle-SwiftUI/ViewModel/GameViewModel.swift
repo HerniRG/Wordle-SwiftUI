@@ -13,35 +13,45 @@ class GameViewModel: ObservableObject {
     @Published var currentColumn: Int = 0
     @Published var gameStatusMessage: String = ""
     @Published var showResetButton: Bool = false
+    @Published var letterCount: Int?
     
     private var wordModel: WordModel?
-    private var allFiveLetterWords: Set<String> = []
-    private let gameController = GameController()  // Definir el GameController
-
+    private var allWords: Set<String> = []
+    private let gameController = GameController()
+    
     init() {
-        self.words = Array(repeating: Array(repeating: LetterState(letter: "", color: .unknown), count: 5), count: 6)
+        self.words = []
+    }
+    
+    func startGame(withLetterCount count: Int) {
+        self.letterCount = count
+        self.words = Array(repeating: Array(repeating: LetterState(letter: "", color: .unknown), count: count), count: 6)
         fetchAllWordsAndStartGame()
     }
     
     func fetchAllWordsAndStartGame() {
-        gameController.fetchAllFiveLetterWords { [weak self] words in
-            DispatchQueue.main.async {
-                self?.allFiveLetterWords = Set(words)
-                self?.fetchWord()
+        if let count = letterCount {
+            gameController.fetchAllWords(ofLength: count) { [weak self] words in
+                DispatchQueue.main.async {
+                    self?.allWords = Set(words)
+                    self?.fetchWord()
+                }
             }
         }
     }
     
     func fetchWord() {
-        gameController.fetchTargetWord { [weak self] word in
-            DispatchQueue.main.async {
-                self?.wordModel = WordModel(word: word.joined())
+        if let count = letterCount {
+            gameController.fetchTargetWord(ofLength: count) { [weak self] word in
+                DispatchQueue.main.async {
+                    self?.wordModel = WordModel(word: word.joined())
+                }
             }
         }
     }
     
     func handleKeyPress(_ letter: String) {
-        guard currentColumn < 5 else { return }
+        guard currentColumn < (letterCount ?? 5) else { return }
         words[currentRow][currentColumn].letter = letter
         currentColumn += 1
     }
@@ -53,20 +63,18 @@ class GameViewModel: ObservableObject {
     }
     
     func handleEnter() {
-        guard currentColumn == 5, let wordModel = wordModel else { return }
+        guard currentColumn == letterCount, let wordModel = wordModel else { return }
         
         let guess = words[currentRow].map { $0.letter }.joined().uppercased()
         
-        if !allFiveLetterWords.contains(guess) {
+        if !allWords.contains(guess) {
             gameStatusMessage = "La palabra no existe en el diccionario"
-            showResetButton = false  // Oculta el botón de reinicio
+            showResetButton = false
             
-            // Borra la línea actual después de un breve retraso
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.clearCurrentLine()
             }
             
-            // Oculta el banner después de 3 segundos
             DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                 withAnimation {
                     self.gameStatusMessage = ""
@@ -80,26 +88,27 @@ class GameViewModel: ObservableObject {
         
         if result.allSatisfy({ $0.color == .correct }) {
             gameStatusMessage = "¡Ganaste!"
-            showResetButton = true  // Muestra el botón de reinicio
+            showResetButton = true
         } else if currentRow < 5 {
             currentRow += 1
             currentColumn = 0
         } else {
             gameStatusMessage = "¡Perdiste! La palabra era \(wordModel.targetWord.map { $0.letter }.joined())"
-            showResetButton = true  // Muestra el botón de reinicio
+            showResetButton = true
         }
     }
     
     private func clearCurrentLine() {
-        words[currentRow] = Array(repeating: LetterState(letter: "", color: .unknown), count: 5)
+        words[currentRow] = Array(repeating: LetterState(letter: "", color: .unknown), count: letterCount ?? 5)
         currentColumn = 0
     }
-    
+        
     func resetGame() {
-        words = Array(repeating: Array(repeating: LetterState(letter: "", color: .unknown), count: 5), count: 6)
+        words = []
         currentRow = 0
         currentColumn = 0
         gameStatusMessage = ""
-        fetchWord()
+        showResetButton = false
+        letterCount = nil
     }
 }

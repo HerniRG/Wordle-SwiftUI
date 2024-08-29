@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		661FA0DD2C7F86980015277D /* LetterCountSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 661FA0DC2C7F86980015277D /* LetterCountSelectionView.swift */; };
+		669C77072C80C42100FE3B36 /* listado-general.txt in Resources */ = {isa = PBXBuildFile; fileRef = 669C77062C80C42100FE3B36 /* listado-general.txt */; };
 		66C0FA402C7B7A5500050B16 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA3F2C7B7A5500050B16 /* KeyboardView.swift */; };
 		66C0FA452C7B7D0200050B16 /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA442C7B7D0200050B16 /* WordService.swift */; };
 		66C0FA482C7B7F9C00050B16 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 66C0FA472C7B7F9C00050B16 /* GameViewModel.swift */; };
@@ -23,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		661FA0DC2C7F86980015277D /* LetterCountSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LetterCountSelectionView.swift; sourceTree = "<group>"; };
+		669C77062C80C42100FE3B36 /* listado-general.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "listado-general.txt"; sourceTree = "<group>"; };
 		66C0FA3F2C7B7A5500050B16 /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		66C0FA442C7B7D0200050B16 /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 		66C0FA472C7B7F9C00050B16 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
@@ -50,6 +54,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6652D99C2C80C1680007A3A9 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				669C77062C80C42100FE3B36 /* listado-general.txt */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
 		66C0FA432C7B7CF400050B16 /* Services */ = {
 			isa = PBXGroup;
 			children = (
@@ -85,6 +97,7 @@
 		66D4A10C2C7B745A008B2E5B /* Worldle-SwiftUI */ = {
 			isa = PBXGroup;
 			children = (
+				6652D99C2C80C1680007A3A9 /* Resources */,
 				66C0FA462C7B7F8400050B16 /* ViewModel */,
 				66C0FA432C7B7CF400050B16 /* Services */,
 				66D4A11D2C7B74B8008B2E5B /* Controller */,
@@ -117,6 +130,7 @@
 			isa = PBXGroup;
 			children = (
 				66D4A10F2C7B745A008B2E5B /* ContentView.swift */,
+				661FA0DC2C7F86980015277D /* LetterCountSelectionView.swift */,
 				66D4A1272C7B797B008B2E5B /* Keyboard */,
 				66D4A1262C7B795D008B2E5B /* Grid */,
 				66C0FA4B2C7B87E600050B16 /* GameStatusBanner.swift */,
@@ -210,6 +224,7 @@
 			files = (
 				66D4A1152C7B745B008B2E5B /* Preview Assets.xcassets in Resources */,
 				66D4A1122C7B745B008B2E5B /* Assets.xcassets in Resources */,
+				669C77072C80C42100FE3B36 /* listado-general.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -231,6 +246,7 @@
 				66C0FA4E2C7B9D0500050B16 /* Model.swift in Sources */,
 				66D4A1232C7B782C008B2E5B /* WordRowView.swift in Sources */,
 				66C0FA4C2C7B87E600050B16 /* GameStatusBanner.swift in Sources */,
+				661FA0DD2C7F86980015277D /* LetterCountSelectionView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

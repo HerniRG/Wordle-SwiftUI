@@ -10,22 +10,24 @@ import Foundation
 class GameController {
     private let wordService = WordService()
     private(set) var targetWord: [String] = []
-    private var allFiveLetterWords: [String] = []
+    private var allWords: [String] = []
     
-    func fetchAllFiveLetterWords(completion: @escaping ([String]) -> Void) {
-        if allFiveLetterWords.isEmpty {
-            wordService.fetchAllFiveLetterWords { [weak self] words in
-                self?.allFiveLetterWords = words
+    // Método para obtener todas las palabras de una longitud específica
+    func fetchAllWords(ofLength length: Int, completion: @escaping ([String]) -> Void) {
+        if allWords.isEmpty {
+            wordService.fetchWords(ofLength: length) { [weak self] words in
+                self?.allWords = words
                 completion(words)
             }
         } else {
-            completion(allFiveLetterWords)
+            completion(allWords)
         }
     }
     
-    func fetchTargetWord(completion: @escaping ([String]) -> Void) {
-        if allFiveLetterWords.isEmpty {
-            fetchAllFiveLetterWords { [weak self] words in
+    // Método para obtener una palabra objetivo de una longitud específica
+    func fetchTargetWord(ofLength length: Int, completion: @escaping ([String]) -> Void) {
+        if allWords.isEmpty {
+            fetchAllWords(ofLength: length) { [weak self] words in
                 if let word = words.randomElement() {
                     self?.targetWord = word.map { String($0) }
                     completion(self?.targetWord ?? [])
@@ -34,7 +36,7 @@ class GameController {
                 }
             }
         } else {
-            if let word = allFiveLetterWords.randomElement() {
+            if let word = allWords.randomElement() {
                 targetWord = word.map { String($0) }
                 completion(targetWord)
             } else {
